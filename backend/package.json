@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node src/index.js",
     "build": "echo \"No build step for JS backend\"",
-    "start": "node src/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "cors": "^2.8.6",
