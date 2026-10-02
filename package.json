@@ -17,8 +17,5 @@
   "devDependencies": {
     "concurrently": "^8.2.0",
     "prettier": "^3.9.4"
-  },
-  "dependencies": {
-    "next": "15.2.4"
   }
 }
