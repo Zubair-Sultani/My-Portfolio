@@ -1,0 +1,28 @@
+.error-page {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.13), transparent 30%), linear-gradient(180deg, #020617 0%, #030b14 100%);
+  padding: 2rem;
+}
+
+.error-card {
+  width: min(480px, 100%);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 15, 32, 0.94);
+  padding: 2.5rem;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.28);
+}
+
+.error-title {
+  font-size: 2.5rem;
+  color: #f8fafc;
+}
+
+.error-text {
+  margin-top: 1rem;
+  color: #94a3b8;
+  line-height: 1.75;
+}
