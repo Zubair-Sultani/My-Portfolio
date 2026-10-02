@@ -15,9 +15,19 @@
   background: rgba(255, 255, 255, 0.84);
 }
 
+.skills-section .skill-card {
+  border-color: var(--skill-line);
+  border-top: 3px solid var(--skill-accent);
+  background: var(--skill-surface);
+}
+
+.skills-section .skill-card-note {
+  background: color-mix(in srgb, var(--skill-surface) 78%, var(--skill-chip));
+}
+
 .skill-title {
   margin: 0;
-  color: var(--color-ink);
+  color: var(--skill-accent);
   font-size: 1rem;
 }
 
@@ -40,6 +50,12 @@
   background: var(--color-soft);
   color: var(--color-accent-dark);
   font-size: 0.85rem;
+}
+
+.skills-section .skill-pill {
+  border-color: var(--skill-line);
+  background: var(--skill-chip);
+  color: var(--skill-accent);
 }
 
 .skill-icon {

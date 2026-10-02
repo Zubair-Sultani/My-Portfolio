@@ -5,7 +5,20 @@ export default function HeroSection() {
         <div className="hero-copy">
           <p className="hero-kicker">Software Engineer · Computer Science Student</p>
           <div>
-            <h1 className="hero-title">Zubair Sultani</h1>
+            <h1 className="hero-title" aria-label="Zubair Sultani">
+              {[..."Zubair Sultani"].map((letter, index) => (
+                letter === ' ' ? ' ' : (
+                  <span
+                    key={`${letter}-${index}`}
+                    className="hero-title-letter"
+                    style={{ '--letter-index': index }}
+                    aria-hidden="true"
+                  >
+                    {letter}
+                  </span>
+                )
+              ))}
+            </h1>
             <p className="hero-subtitle">Building thoughtful software for real-world needs.</p>
           </div>
           <p className="hero-description">

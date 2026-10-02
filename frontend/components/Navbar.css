@@ -3,44 +3,49 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid rgba(220, 229, 223, 0.9);
-  background: rgba(251, 252, 250, 0.96);
+  border-bottom: 1px solid var(--navbar-border);
+  background: color-mix(in srgb, var(--navbar-surface) 92%, transparent);
   backdrop-filter: blur(12px);
 }
 
 .nav-bar {
-  width: min(1120px, 100%);
-  min-height: 4.5rem;
+  width: min(1280px, 100%);
+  min-height: 4.75rem;
   margin: 0 auto;
   padding: 0.75rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
+.nav-identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
 .site-brand {
   flex: 0 0 auto;
-  color: var(--color-ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.4rem;
+  color: var(--navbar-ink);
+  font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.08rem;
   font-weight: 700;
-  text-shadow: 1px 1px 4px var(--color-accent);
   text-decoration: none;
-  color: var(--color-ink);
+  color: var(--navbar-ink);
   transition: color 160ms ease;
 }
 
 .site-brand span {
-  color: var(--color-accent);
+  color: var(--navbar-hover);
 }
 
 .nav-bar ul {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: clamp(0.75rem, 2vw, 1.5rem);
+  gap: clamp(0.55rem, 1.4vw, 1.15rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,36 +54,44 @@
 .nav-bar ul a {
   display: inline-block;
   padding: 0.35rem 0;
-  color: var(--color-muted);
-  font-size: 0.88rem;
+  color: var(--navbar-muted);
+  font-size: 0.82rem;
   font-weight: 600;
   transition: color 160ms ease;
 }
 
 .nav-bar ul a:hover {
-  color: var(--color-accent-dark);
+  color: var(--navbar-hover);
+}
+
+.nav-bar ul a:focus-visible {
+  border-radius: 3px;
 }
 
 @media (max-width: 760px) {
   .nav-bar {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.6rem 1.25rem 0.8rem;
+    gap: 0.2rem;
+    padding: 0.65rem 1.25rem 0.55rem;
   }
 
+  .nav-identity {
+    min-height: 2.35rem;
+  }
 
   .nav-bar ul {
     width: 100%;
     justify-content: flex-start;
-    gap: 0.4rem 1rem;
+    gap: 0.25rem 1rem;
     overflow-x: auto;
     scrollbar-width: thin;
+    padding-bottom: 0.15rem;
   }
 
   .nav-bar ul a {
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 }
 

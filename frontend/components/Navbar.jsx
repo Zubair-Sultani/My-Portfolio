@@ -11,11 +11,16 @@ const navigation = [
   ['Contact', 'contact']
 ];
 
+import ThemeToggle from './ThemeToggle';
+
 export default function Navbar() {
   return (
     <header className="site-header">
       <nav className="nav-bar" aria-label="Main navigation">
-        <a className="site-brand" href="#main-content">Zubair Sultani<span>.</span></a>
+        <div className="nav-identity">
+          <a className="site-brand" href="#main-content">Zubair Sultani</a>
+          <ThemeToggle />
+        </div>
         <ul>
           {navigation.map(([label, id]) => (
             <li key={id}><a href={`#${id}`}>{label}</a></li>

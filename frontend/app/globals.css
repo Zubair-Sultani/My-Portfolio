@@ -13,18 +13,68 @@
 
 :root {
   color-scheme: light;
-  --color-ink: #18332e;
-  --color-muted: #56645f;
-  --color-accent: #137c69;
-  --color-accent-dark: #0d5b4d;
-  --color-line: #dce5df;
-  --color-paper: #fbfcfa;
-  --color-soft: #f0f5f1;
+  --color-ink: #172c36;
+  --color-muted: #566b73;
+  --color-accent: #197c70;
+  --color-accent-dark: #105e56;
+  --color-highlight: #bd7540;
+  --color-line: #dce5e6;
+  --color-paper: #f5f8f8;
+  --color-soft: #eaf2f0;
   --color-white: #ffffff;
-  font-family: 'Aptos', 'Segoe UI', sans-serif;
+  --surface: #ffffff;
+  --surface-alt: #edf3f2;
+  --shadow-soft: 0 14px 38px rgba(27, 54, 60, 0.07);
+  --grid-color: rgba(25, 124, 112, 0.035);
+  --navbar-surface: #eaf0f5;
+  --navbar-border: #d2dee8;
+  --navbar-ink: #21384c;
+  --navbar-muted: #526c81;
+  --navbar-hover: #16685f;
+  --project-accent: #3b8069;
+  --project-surface: #f0f7f3;
+  --project-line: #d4e5db;
+  --project-chip: #e1f0e7;
+  --project-button-text: #ffffff;
+  --skill-accent: #3b8069;
+  --skill-surface: #f0f7f3;
+  --skill-line: #d4e5db;
+  --skill-chip: #e1f0e7;
+  font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
   background: var(--color-paper);
   color: var(--color-ink);
   scroll-behavior: smooth;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-ink: #e7f0ef;
+  --color-muted: #a9bbbd;
+  --color-accent: #73d6c0;
+  --color-accent-dark: #9ae5d3;
+  --color-highlight: #e0a46e;
+  --color-line: #2b4044;
+  --color-paper: #10191d;
+  --color-soft: #1b2b2e;
+  --color-white: #092d2a;
+  --surface: #172428;
+  --surface-alt: #1d2d31;
+  --shadow-soft: 0 18px 42px rgba(0, 0, 0, 0.2);
+  --navbar-surface: #182630;
+  --navbar-border: #2f4551;
+  --navbar-ink: #dce8ed;
+  --navbar-muted: #a9bec9;
+  --navbar-hover: #8cdbd0;
+  --project-accent: #8ac8a2;
+  --project-surface: #1a2925;
+  --project-line: #31483e;
+  --project-chip: #233a2f;
+  --project-button-text: #14231c;
+  --skill-accent: #8ac8a2;
+  --skill-surface: #1a2925;
+  --skill-line: #31483e;
+  --skill-chip: #233a2f;
+  --grid-color: rgba(115, 214, 192, 0.035);
 }
 
 html {
@@ -36,8 +86,8 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--color-paper);
-  background-image: linear-gradient(rgba(19, 124, 105, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(19, 124, 105, 0.025) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(25, 124, 112, 0.07), transparent 44%), linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: auto, 36px 36px, 36px 36px;
   color: var(--color-ink);
   line-height: 1.65;
 }
@@ -72,8 +122,314 @@ button:disabled {
 }
 
 ::selection {
-  background-color: rgba(19, 124, 105, 0.2);
+  background-color: rgba(25, 124, 112, 0.25);
   color: var(--color-ink);
+}
+
+.section-heading {
+  max-width: 790px;
+}
+
+.section-eyebrow {
+  letter-spacing: 0.12em;
+}
+
+.section-title {
+  font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.section-description {
+  max-width: 68ch;
+}
+
+.about-panel,
+.skill-card,
+.project-card,
+.experience-card,
+.education-item,
+.contact-form {
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-panel-accent,
+.education-item-highlight {
+  border-top-color: var(--color-highlight);
+}
+
+.skill-pill,
+.project-tag {
+  border-color: var(--color-line);
+  border-radius: 999px;
+  background: var(--color-soft);
+  color: var(--color-accent-dark);
+}
+
+.skill-icon {
+  background: var(--surface);
+}
+
+.project-index {
+  color: var(--color-accent);
+}
+
+.contact-input,
+.contact-textarea {
+  border-color: var(--color-line);
+  border-radius: 5px;
+  background: var(--surface-alt);
+  color: var(--color-ink);
+}
+
+.contact-input::placeholder {
+  color: var(--color-muted);
+}
+
+.theme-toggle {
+  display: inline-grid;
+  flex: 0 0 2.55rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.theme-toggle svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.theme-toggle:hover {
+  transform: rotate(-8deg);
+  border-color: var(--color-accent);
+  color: var(--color-accent-dark);
+}
+
+.hero-section {
+  padding: 1rem 0 5rem;
+}
+
+.hero-kicker {
+  width: fit-content;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--color-accent-dark);
+  letter-spacing: 0.09em;
+}
+
+.hero-title {
+  font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(3.2rem, 7vw, 5.4rem);
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+.hero-subtitle {
+  color: var(--color-ink);
+  font-size: clamp(1.15rem, 2.2vw, 1.42rem);
+  font-weight: 550;
+}
+
+.hero-profile-card {
+  padding: 0.55rem;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 24px 58px rgba(18, 48, 55, 0.14);
+}
+
+.hero-profile-card img {
+  border-radius: 5px;
+}
+
+.hero-profile-caption {
+  border: 0;
+  padding: 0.75rem 0.2rem 0.25rem;
+}
+
+.hero-button {
+  border-radius: 5px;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.about-panel,
+.skill-card,
+.education-item,
+.service-card,
+.experience-card,
+.project-card,
+.contact-form {
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.about-panel:hover,
+.skill-card:hover,
+.education-item:hover,
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(27, 54, 60, 0.12);
+}
+
+.project-card {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-top-width: 3px;
+}
+
+.project-title {
+  font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 680;
+}
+
+.project-details {
+  gap: 1.6rem;
+}
+
+.project-details h4 {
+  color: var(--color-accent-dark);
+  letter-spacing: 0;
+}
+
+.project-github-link {
+  border-radius: 5px;
+  transition: transform 160ms ease, color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.project-github-link:hover {
+  transform: translateY(-2px);
+}
+
+.experience-card {
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-accent);
+}
+
+.experience-date {
+  color: var(--color-accent-dark);
+}
+
+.education-item-highlight {
+  border-top-width: 3px;
+}
+
+.service-card {
+  padding: 1.35rem 1.2rem 1.35rem 0;
+}
+
+.service-title {
+  transition: color 160ms ease;
+}
+
+.service-card:hover .service-title {
+  color: var(--color-accent-dark);
+}
+
+.contact-section {
+  padding-top: 2.5rem;
+}
+
+.contact-form {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.contact-input,
+.contact-textarea {
+  min-height: 2.9rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.contact-textarea {
+  min-height: auto;
+  resize: vertical;
+}
+
+.contact-button {
+  border-radius: 5px;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.contact-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.reveal-root > .home-container > section {
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal-root.reveal-active > .home-container > section:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal-root > .home-container > section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-root > .home-container > section {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-section {
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-profile-card {
+    width: min(100%, 340px);
+  }
+
+  .contact-form {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title {
+    font-size: clamp(2.75rem, 13vw, 4rem);
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-button {
+    padding-inline: 0.7rem;
+  }
+
+  .hero-button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-profile-caption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .project-card-header {
+    gap: 0.75rem;
+  }
+
+  .project-index {
+    font-size: 1.5rem;
+  }
 }
 
 img,

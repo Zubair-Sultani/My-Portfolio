@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDatabase from './services/db.js';
 import contactRouter from './routes/contact.js';
 
 dotenv.config();
@@ -17,18 +16,6 @@ app.get('/api/health', (_, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });
 });
 
-const startServer = () => {
-  app.listen(port, () => {
-    console.log(`Backend API running on http://localhost:${port}`);
-  });
-};
-
-connectDatabase()
-  .then(() => {
-    startServer();
-  })
-  .catch((error) => {
-    console.warn('Warning: unable to connect to MongoDB. Backend will still start.');
-    console.warn(error.message || error);
-    startServer();
-  });
+app.listen(port, () => {
+  console.log(`Backend API running on http://localhost:${port}`);
+});

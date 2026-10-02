@@ -11,10 +11,16 @@
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.projects-section .project-card {
+  border-color: var(--project-line);
+  border-top-color: var(--project-accent);
+  background: var(--project-surface);
+}
+
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: var(--color-accent);
-  box-shadow: 0 12px 28px rgba(25, 54, 43, 0.08);
+  border-color: var(--project-accent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--project-accent) 14%, transparent);
 }
 
 .project-card-header {
@@ -26,7 +32,7 @@
 
 .project-badge {
   margin: 0 0 0.5rem;
-  color: var(--color-accent-dark);
+  color: var(--project-accent);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -36,9 +42,9 @@
   max-width: 46rem;
   margin: 0;
   color: var(--color-ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.65rem;
-  font-weight: 500;
+  font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 650;
   line-height: 1.25;
 }
 
@@ -88,6 +94,12 @@
   font-size: 0.8rem;
 }
 
+.projects-section .project-tag {
+  border-color: var(--project-line);
+  background: var(--project-chip);
+  color: var(--project-accent);
+}
+
 .project-github-link {
   display: inline-flex;
   align-items: center;
@@ -104,10 +116,21 @@
   transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 
+.projects-section .project-github-link {
+  border-color: var(--project-accent);
+  color: var(--project-accent);
+}
+
 .project-github-link:hover {
   border-color: var(--color-ink);
   background: var(--color-ink);
   color: var(--color-white);
+}
+
+.projects-section .project-github-link:hover {
+  border-color: var(--project-accent);
+  background: var(--project-accent);
+  color: var(--project-button-text);
 }
 
 @media (max-width: 760px) {

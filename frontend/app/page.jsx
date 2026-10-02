@@ -7,6 +7,7 @@ import ExperienceSection from '../components/ExperienceSection';
 import ServicesSection from '../components/ServicesSection';
 import ContactSection from '../components/ContactSection';
 import Navbar from '../components/Navbar';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function HomePage() {
   return (
@@ -14,16 +15,18 @@ export default function HomePage() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Navbar />
       <main id="main-content" className="home-page">
-        <div className="home-container">
-          <HeroSection />
-          <AboutSection />
-          <EducationSection />
-          <SkillsSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <ServicesSection />
-          <ContactSection />
-        </div>
+        <ScrollReveal>
+          <div className="home-container">
+            <HeroSection />
+            <AboutSection />
+            <EducationSection />
+            <SkillsSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <ServicesSection />
+            <ContactSection />
+          </div>
+        </ScrollReveal>
       </main>
       <footer className="site-footer">
         <p>© {new Date().getFullYear()} Zubair Sultani</p>

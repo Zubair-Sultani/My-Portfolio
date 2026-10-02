@@ -24,6 +24,7 @@ export default function ContactSection() {
           onSubmit={async (event) => {
             event.preventDefault();
             setStatus('sending');
+            setSubmitted(false);
             setErrorMessage('');
 
             const form = event.currentTarget;
@@ -43,8 +44,11 @@ export default function ContactSection() {
 
               const body = await response.json().catch(() => ({}));
               if (!response.ok) {
-                const validationErrors = body.errors?.map((error) => error.message).join(' ');
-                setErrorMessage(body.error || validationErrors || 'Unable to submit the form.');
+                const validationErrors = Array.isArray(body.errors)
+                  ? body.errors.map((error) => error.message).filter(Boolean).join(' ')
+                  : '';
+                const apiError = typeof body.error === 'string' ? body.error : '';
+                setErrorMessage(apiError || validationErrors || 'Unable to submit the form.');
                 setStatus('error');
                 return;
               }
@@ -61,7 +65,7 @@ export default function ContactSection() {
         >
           <label className="contact-field">
             Name
-            <input name="name" required className="contact-input" placeholder='Enter your name here'/>
+            <input name="name" required minLength={2} className="contact-input" placeholder='Enter your name here'/>
           </label>
           <label className="contact-field">
             Email
@@ -69,7 +73,7 @@ export default function ContactSection() {
           </label>
           <label className="contact-field">
             Message
-            <textarea name="message" required rows={5} className="contact-textarea" />
+            <textarea name="message" required minLength={10} rows={5} className="contact-textarea" />
           </label>
           <button type="submit" className="contact-button" disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending...' : submitted ? 'Message Sent' : 'Send Message'}
