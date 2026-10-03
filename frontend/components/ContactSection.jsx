@@ -36,11 +36,16 @@ export default function ContactSection() {
             };
 
             try {
-              const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-              });
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(payload),
+                }
+              );
 
               const body = await response.json().catch(() => ({}));
               if (!response.ok) {
@@ -65,11 +70,11 @@ export default function ContactSection() {
         >
           <label className="contact-field">
             Name
-            <input name="name" required minLength={2} className="contact-input" placeholder='Enter your name here'/>
+            <input name="name" required minLength={2} className="contact-input" placeholder='Enter your name here' />
           </label>
           <label className="contact-field">
             Email
-            <input name="email" type="email" required className="contact-input"placeholder='Enter your email here' />
+            <input name="email" type="email" required className="contact-input" placeholder='Enter your email here' />
           </label>
           <label className="contact-field">
             Message
