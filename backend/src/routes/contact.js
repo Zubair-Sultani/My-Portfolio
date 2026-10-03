@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 const router = Router();
 
@@ -10,41 +10,26 @@ const contactSchema = z.object({
   message: z.string().min(10),
 });
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 router.post('/', async (req, res) => {
   try {
     const payload = contactSchema.parse(req.body);
 
-    const {
-      GMAIL_USER,
-      GMAIL_APP_PASSWORD,
-      CONTACT_EMAIL,
-    } = process.env;
+    const { CONTACT_EMAIL, RESEND_FROM_EMAIL } = process.env;
 
-    if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !CONTACT_EMAIL) {
+    if (!process.env.RESEND_API_KEY || !CONTACT_EMAIL || !RESEND_FROM_EMAIL) {
       return res.status(503).json({
         success: false,
         error: 'Email delivery is not configured',
       });
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: GMAIL_USER,
-        pass: GMAIL_APP_PASSWORD,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${GMAIL_USER}>`,
-      to: CONTACT_EMAIL,
-
-      // When you click Reply in Gmail,
-      // it will reply directly to the person who contacted you.
+    const { data, error } = await resend.emails.send({
+      from: RESEND_FROM_EMAIL,
+      to: [CONTACT_EMAIL],
       replyTo: payload.email,
-
       subject: `Portfolio Contact: ${payload.name}`,
-
       text: `
 Name: ${payload.name}
 Email: ${payload.email}
@@ -53,6 +38,17 @@ Message:
 ${payload.message}
       `,
     });
+
+    if (error) {
+      console.error('Resend error:', error);
+
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to send contact email',
+      });
+    }
+
+    console.log('Email sent:', data?.id);
 
     return res.status(200).json({
       success: true,
