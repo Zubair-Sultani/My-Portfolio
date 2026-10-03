@@ -6,7 +6,7 @@ import contactRouter from './routes/contact.js';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT ? Number(process.env.PORT) : 4000;
+const port = Number(process.env.PORT) || 4000;
 
 app.use(cors({ origin: '*' }));
 app.use(express.json());
