@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function HeroSection() {
   return (
     <section id="hero" className="hero-section">
@@ -37,7 +39,14 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-profile-card">
-          <img src="/profile.jpg" alt="Portrait of Zubair Sultani" />
+          <Image
+            src="/profile.jpg"
+            alt="Portrait of Zubair Sultani"
+            width={1200}
+            height={1200}
+            sizes="(max-width: 760px) min(320px, calc(100vw - 60px)), (max-width: 900px) 35vw, 320px"
+            priority
+          />
           <div className="hero-profile-caption">
             <span>Computer Science</span>
             <span>Kunar University</span>

@@ -1,5 +1,6 @@
 import './globals.css';
 import { getSiteUrl } from '../lib/site-url.js';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const siteUrl = getSiteUrl();
 
@@ -11,7 +12,7 @@ export const metadata = {
   title: 'Zubair Sultani | Software Engineer',
   description: 'Portfolio of Zubair Sultani, a Computer Science student and software developer focused on building practical web applications.',
   icons: {
-    icon: '/profile.jpg'
+    icon: '/profile-icon.webp'
   },
   openGraph: {
     url: siteUrl.toString(),
@@ -32,7 +33,10 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }
