@@ -15,6 +15,10 @@ export const metadata = {
   description:
     "Zubair Sultani is a Software Engineer and Full-Stack Developer specializing in web technologies, React, Node.js, Express.js, MongoDB, and modern software development.",
 
+      verification: {
+    google: "WXZLnn-GpiC0WS-3ENBKgdINEeO7pxpECZegcBjBn0M",
+  },
+
   keywords: [
     "Zubair Sultani",
     "Zubair Sultani pashai",
