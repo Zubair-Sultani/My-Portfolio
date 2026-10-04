@@ -5,23 +5,67 @@ import WhatsAppButton from '../components/WhatsAppButton';
 const siteUrl = getSiteUrl();
 
 export const metadata = {
-  metadataBase: siteUrl,
-  alternates: {
-    canonical: '/',
+  metadataBase: new URL("https://my-portfolio-sultani4.vercel.app"),
+
+  title: {
+    default: "Zubair Sultani | Software Engineer & Full-Stack Developer",
+    template: "%s | Zubair Sultani",
   },
-  title: 'Zubair Sultani | Software Engineer',
-  description: 'Portfolio of Zubair Sultani, a Computer Science student and software developer focused on building practical web applications.',
-  icons: {
-    icon: '/profile-icon.webp'
+
+  description:
+    "Zubair Sultani is a Software Engineer and Full-Stack Developer specializing in web technologies, React, Node.js, Express.js, MongoDB, and modern software development.",
+
+  keywords: [
+    "Zubair Sultani",
+    "Zubair Sultani pashai",
+    "Zubair Sultani Software Engineer",
+    "Zubair Sultani Full Stack Developer",
+    "Zubair Sultani Portfolio",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Web Developer",
+    "React Developer",
+    "Node.js Developer",
+    "MERN Stack Developer",
+  ],
+
+  authors: [
+    {
+      name: "Zubair Sultani",
+    },
+  ],
+
+  creator: "Zubair Sultani",
+
+  robots: {
+    index: true,
+    follow: true,
   },
+
   openGraph: {
-    url: siteUrl.toString(),
-    title: 'Zubair Sultani | Software Engineer',
-    description: 'Computer Science student and software developer focused on practical web applications.',
-    siteName: 'Zubair Sultani Portfolio',
-    type: 'website'
-  }
+    title: "Zubair Sultani | Software Engineer & Full-Stack Developer",
+    description:
+      "Portfolio of Zubair Sultani, Software Engineer and Full-Stack Developer.",
+    url: "https://my-portfolio-sultani4.vercel.app",
+    siteName: "Zubair Sultani Portfolio",
+    type: "website",
+  },
 };
+
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Zubair Sultani",
+  url: "https://my-portfolio-sultani4.vercel.app",
+  jobTitle: "Software Engineer",
+  sameAs: [
+    "https://github.com/Zubair-Sultani/",
+    "https://www.linkedin.com/in/zubair-sultani-5246743ab/"
+  ]
+};
+
+
 
 export default function RootLayout({ children }) {
   return (
@@ -34,6 +78,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
         {children}
         <WhatsAppButton />
       </body>

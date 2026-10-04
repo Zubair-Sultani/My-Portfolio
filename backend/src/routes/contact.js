@@ -10,21 +10,33 @@ const contactSchema = z.object({
   message: z.string().min(10),
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post('/', async (req, res) => {
   try {
     const payload = contactSchema.parse(req.body);
 
-    const { CONTACT_EMAIL, RESEND_FROM_EMAIL } = process.env;
+    // Get environment variables
+    const {
+      RESEND_API_KEY,
+      CONTACT_EMAIL,
+      RESEND_FROM_EMAIL
+    } = process.env;
 
-    if (!process.env.RESEND_API_KEY || !CONTACT_EMAIL || !RESEND_FROM_EMAIL) {
+    // Check that email configuration exists
+    if (!RESEND_API_KEY || !CONTACT_EMAIL || !RESEND_FROM_EMAIL) {
+      console.error('Missing email environment variables');
+
       return res.status(503).json({
         success: false,
         error: 'Email delivery is not configured',
       });
     }
 
+    // Create Resend instance here
+    const resend = new Resend(RESEND_API_KEY);
+
+    // Send email
     const { data, error } = await resend.emails.send({
       from: RESEND_FROM_EMAIL,
       to: [CONTACT_EMAIL],

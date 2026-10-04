@@ -1,9 +1,8 @@
-import { getSiteUrl } from '../lib/site-url.js';
-
 export default function sitemap() {
   return [
     {
-      url: getSiteUrl(),
+      url: 'https://my-portfolio-sultani4.vercel.app',
+      lastModified: new Date(),
     },
   ];
 }

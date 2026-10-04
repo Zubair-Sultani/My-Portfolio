@@ -41,7 +41,7 @@ export default function HeroSection() {
         <div className="hero-profile-card">
           <Image
             src="/profile.jpg"
-            alt="Portrait of Zubair Sultani"
+            alt="Zubair Sultani, Software Engineer and Full-Stack Developer"
             width={1200}
             height={1200}
             sizes="(max-width: 760px) min(320px, calc(100vw - 60px)), (max-width: 900px) 35vw, 320px"
