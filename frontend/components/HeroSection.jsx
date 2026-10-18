@@ -1,26 +1,16 @@
 import Image from 'next/image';
+import HeroName from './HeroName';
+import HeroVisual from './HeroVisual';
 
 export default function HeroSection() {
   return (
     <section id="hero" className="hero-section">
+      <HeroVisual />
       <div className="hero-grid">
         <div className="hero-copy">
           <p className="hero-kicker">Software Engineer · Computer Science Student</p>
           <div>
-            <h1 className="hero-title" aria-label="Zubair Sultani">
-              {[..."Zubair Sultani"].map((letter, index) => (
-                letter === ' ' ? ' ' : (
-                  <span
-                    key={`${letter}-${index}`}
-                    className="hero-title-letter"
-                    style={{ '--letter-index': index }}
-                    aria-hidden="true"
-                  >
-                    {letter}
-                  </span>
-                )
-              ))}
-            </h1>
+            <HeroName />
             <p className="hero-subtitle">Building thoughtful software for real-world needs.</p>
           </div>
           <p className="hero-description">
@@ -38,18 +28,20 @@ export default function HeroSection() {
           </a>
         </div>
 
-        <div className="hero-profile-card">
-          <Image
-            src="/profile.jpg"
-            alt="Zubair Sultani, Software Engineer and Full-Stack Developer"
-            width={1200}
-            height={1200}
-            sizes="(max-width: 760px) min(320px, calc(100vw - 60px)), (max-width: 900px) 35vw, 320px"
-            priority
-          />
-          <div className="hero-profile-caption">
-            <span>Computer Science</span>
-            <span>Kunar University</span>
+        <div className="hero-showcase">
+          <div className="hero-profile-card">
+            <Image
+              src="/profile.jpg"
+              alt="Zubair Sultani, Software Engineer and Full-Stack Developer"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 540px) min(78vw, 320px), (max-width: 760px) min(300px, calc(100vw - 40px)), (max-width: 1180px) min(30vw, 300px), 300px"
+              priority
+            />
+            <div className="hero-profile-caption">
+              <span>Computer Science</span>
+              <span>Kunar University</span>
+            </div>
           </div>
         </div>
       </div>

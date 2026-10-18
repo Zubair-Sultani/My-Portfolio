@@ -1,6 +1,6 @@
-import './globals.css';
-import { getSiteUrl } from '../lib/site-url.js';
-import WhatsAppButton from '../components/WhatsAppButton';
+import "./globals.css";
+import { getSiteUrl } from "../lib/site-url.js";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const siteUrl = getSiteUrl();
 
@@ -15,7 +15,7 @@ export const metadata = {
   description:
     "Zubair Sultani is a Software Engineer and Full-Stack Developer specializing in web technologies, React, Node.js, Express.js, MongoDB, and modern software development.",
 
-      verification: {
+  verification: {
     google: "WXZLnn-GpiC0WS-3ENBKgdINEeO7pxpECZegcBjBn0M",
   },
 
@@ -56,7 +56,6 @@ export const metadata = {
   },
 };
 
-
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -65,11 +64,9 @@ const personSchema = {
   jobTitle: "Software Engineer",
   sameAs: [
     "https://github.com/Zubair-Sultani/",
-    "https://www.linkedin.com/in/zubair-sultani-5246743ab/"
-  ]
+    "https://www.linkedin.com/in/zubair-sultani-5246743ab/",
+  ],
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
@@ -77,7 +74,7 @@ export default function RootLayout({ children }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var saved=localStorage.getItem('portfolio-theme');var systemDark=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=saved||(systemDark?'dark':'light')}catch(error){document.documentElement.dataset.theme='light'}})();`
+            __html: `(function(){try{var saved=localStorage.getItem('portfolio-theme');var systemDark=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=saved||(systemDark?'dark':'light')}catch(error){document.documentElement.dataset.theme='light'}})();`,
           }}
         />
       </head>
